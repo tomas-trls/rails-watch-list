@@ -1,0 +1,41 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://i1.sndcdn.com/avatars-YMZvHyxWoLl3AzFg-Ug2F0Q-t240x240.jpg"%>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "My lists", lists_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80)">
+  <div class="container text-center">
+    <h1>Save any kind of <strong>movies !</strong></h1>
+    <p>Join the world of imagination...</p>
+  </div>
+</div>
+<div class="container">
+<div class="d-flex justify-content-between">
+  <h2>My lists</h2>
+  <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat mb-3" %>
+</div>
+<div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.image_url%>)">
+        <%= list.name %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to lists_path, class: "navbar-brand" do %>
+    <%= image_tag "https://i1.sndcdn.com/avatars-YMZvHyxWoLl3AzFg-Ug2F0Q-t240x240.jpg"%>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "My lists", lists_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>)">
+  <div class="container text-center">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<h1>Lists#show</h1>
+<p>Find me in app/views/lists/show.html.erb</p>
+
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2>My lists</h2>
+    <%= link_to "Add a movie", "#", class: "btn btn-flat mb-3" %>
+  </div>
+  <div class="cards">
+    <% @movies.each do |movie| %>
+      <div class="card-trip">
+          <img src="<%= movie.poster_url %>" />
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= movie.title %></h2>
+              <p><%= movie.overview %></p>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>

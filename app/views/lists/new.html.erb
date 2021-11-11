@@ -1,0 +1,28 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to lists_path, class: "navbar-brand" do %>
+    <%= image_tag "https://i1.sndcdn.com/avatars-YMZvHyxWoLl3AzFg-Ug2F0Q-t240x240.jpg"%>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "My lists", lists_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="container">
+<h1 class="my-3">Create a new list</h1>
+  <%= render 'form' %>
+  <%= link_to 'Back', lists_path %>
+</div>
