@@ -21,14 +21,11 @@
 </div>
 
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>)">
-  <div class="container text-center">
+  <div class="float-right"> <span style="position: relative; top: -140px; left: -10px;" class="p-2 badge badge-warning"><%= Movie.all.count %> movies</span></div>
+  <div class="text-center">
     <h1><%= @list.name %></h1>
   </div>
 </div>
-
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
-
 
 <div class="container">
   <div class="d-flex justify-content-between">
@@ -36,13 +33,16 @@
     <%= link_to "Add a movie", "#", class: "btn btn-flat mb-3" %>
   </div>
   <div class="cards">
-    <% @movies.each do |movie| %>
+    <% Movie.all.each do |movie| %>
       <div class="card-trip">
           <img src="<%= movie.poster_url %>" />
           <div class="card-trip-infos">
             <div>
-              <h2><%= movie.title %></h2>
+              <h2><%= movie.title %> - <%= movie.rating %> ⭐️</h2>
               <p><%= movie.overview %></p>
+            <div class="d-flex justify-content-end">
+              <a href="#">Delete</a>
+            </div>
             </div>
           </div>
       </div>
