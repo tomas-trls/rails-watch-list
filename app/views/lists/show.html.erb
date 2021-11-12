@@ -61,7 +61,7 @@
               <h2><%= bookmark.movie.title %> - <%= bookmark.movie.rating %> ⭐️</h2>
               <p><%= bookmark.movie.overview %></p>
             </div>
-            <div class="d-block">
+            <div class="d-block pt-3">
               <div class="d-flex justify-content-between">
               <div> ❝<%= bookmark.comment  %></div>
               <%= link_to "🗑", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }%>

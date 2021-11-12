@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_11_12_151858) do
     t.bigint "list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "movie"
     t.index ["list_id"], name: "index_bookmarks_on_list_id"
     t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
   end
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_151858) do
     t.string "title"
     t.text "overview"
     t.string "poster_url"
-    t.decimal "rating"
+    t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
