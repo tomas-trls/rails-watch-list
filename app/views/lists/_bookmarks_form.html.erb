@@ -1,5 +1,5 @@
-<%= simple_form_for [@list, @bookmark] do |f| %>
-          <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
-          <%= f.association :movie, prompt: 'Select a movie' %>
-          <%= f.submit class: 'btn btn-flat' %>
-        <% end %>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+              <%= f.association :movie, prompt: 'Select a movie' %>
+              <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
+              <%= f.submit class: 'btn btn-flat' %>
+            <% end %>

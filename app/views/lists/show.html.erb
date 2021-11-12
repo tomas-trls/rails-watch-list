@@ -30,17 +30,38 @@
 <div class="container mb-5">
   <div class="d-flex justify-content-between">
     <h2>My movies</h2>
-    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-flat mb-3" %>
+    <%= link_to "Add a movie", "#movieForm", { class: "btn btn-flat mb-3", 'data-toggle': "modal", 'data-target': "#movieForm" }  %>
   </div>
 
-  <div class="cards">
+  <div class="modal fade" id="movieForm" tabindex="-1" role="dialog" aria-labelledby="movieForm" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="movieForm">Add a Movie to your list!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'bookmarks_form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="cards my-4 mb-5">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="card-trip">
           <img src="<%= bookmark.movie.poster_url %>" />
-          <div class="card-trip-infos">
-            <div>
+          <div class="card-trip-infos flex-column align-items-stretch justify-content-end">
+            <div class="d-inline-block ">
               <h2><%= bookmark.movie.title %> - <%= bookmark.movie.rating %> ⭐️</h2>
-              <p class="mb-5"><%= bookmark.movie.overview %></p>
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+            <div class="d-block">
               <div class="d-flex justify-content-between">
               <div> ❝<%= bookmark.comment  %></div>
               <%= link_to "🗑", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }%>
@@ -50,8 +71,17 @@
       </div>
     <% end %>
   </div>
-<div>
-<%= render 'bookmarks_form' %>
-<%= render 'review_form' %>
-</div>
+  <hr/>
+<div class="my-5 d-flex justify-content-between">
+  <div class="card w-75 h-25" style="background-color: #F4F4F4; border: none">
+  <h3><strong>Reviews</strong></h3>
+  <% @list.reviews.each do |review| %>
+  <div class="card-body pl-0">
+    <p><%= review.rating %></p>
+    <p><%= review.comment %></p>
+    <hr class="m-0" style="position:relative; top: 1.25rem"/>
+  </div>
+  <% end %>
+  </div>
+  <%= render 'review_form', class: "float-right" %>
 </div>
