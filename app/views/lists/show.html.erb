@@ -21,31 +21,37 @@
 </div>
 
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>)">
-  <div class="float-right"> <span style="position: relative; top: -140px; left: -10px;" class="p-2 badge badge-warning"><%= Movie.all.count %> movies</span></div>
+  <div class="float-right"> <span style="position: relative; top: -140px; left: -10px;" class="p-2 badge badge-warning"><%= @list.bookmarks.count %> movies</span></div>
   <div class="text-center">
     <h1><%= @list.name %></h1>
   </div>
 </div>
 
-<div class="container">
+<div class="container mb-5">
   <div class="d-flex justify-content-between">
-    <h2>My lists</h2>
-    <%= link_to "Add a movie", "#", class: "btn btn-flat mb-3" %>
+    <h2>My movies</h2>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-flat mb-3" %>
   </div>
+
   <div class="cards">
-    <% Movie.all.each do |movie| %>
+    <% @list.bookmarks.each do |bookmark| %>
       <div class="card-trip">
-          <img src="<%= movie.poster_url %>" />
+          <img src="<%= bookmark.movie.poster_url %>" />
           <div class="card-trip-infos">
             <div>
-              <h2><%= movie.title %> - <%= movie.rating %> ⭐️</h2>
-              <p><%= movie.overview %></p>
-            <div class="d-flex justify-content-end">
-              <a href="#">Delete</a>
-            </div>
+              <h2><%= bookmark.movie.title %> - <%= bookmark.movie.rating %> ⭐️</h2>
+              <p class="mb-5"><%= bookmark.movie.overview %></p>
+              <div class="d-flex justify-content-between">
+              <div> ❝<%= bookmark.comment  %></div>
+              <%= link_to "🗑", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" }%>
+              </div>
             </div>
           </div>
       </div>
     <% end %>
   </div>
+<div>
+<%= render 'bookmarks_form' %>
+<%= render 'review_form' %>
+</div>
 </div>
