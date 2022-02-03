@@ -77,7 +77,7 @@
   <h3><strong>Reviews</strong></h3>
   <% @list.reviews.each do |review| %>
   <div class="card-body pl-0">
-    <p><%= review.rating %></p>
+    <p><%= '⭐️' * review.rating %></p>
     <p><%= review.comment %></p>
     <hr class="m-0" style="position:relative; top: 1.25rem"/>
   </div>
